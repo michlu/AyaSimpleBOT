@@ -11,10 +11,9 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  */
 public class Command extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event){
-        if(event.getMessage().getContent().startsWith("!")){
+        if(event.getMessage().getContent().startsWith("!") && !event.getMember().getUser().isBot()){
             String[] args = event.getMessage().getContent().replaceFirst("!", "").split(" ");
 
-            if(!event.getMember().getUser().isBot()){
                 switch(args[0].toLowerCase()){
                     case"help":
                         Help.run(event.getMessage());
@@ -23,8 +22,6 @@ public class Command extends ListenerAdapter {
                         Online.run(event);
                         break;
                 }
-            }
-
         }
     }
 }
