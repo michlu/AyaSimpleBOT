@@ -16,7 +16,7 @@ import java.util.Properties;
  * @sience 14.09.2018
  */
 public class Main {
-    public static JDA jda;
+    private static JDA jda;
 
     public static void main(String[] args) {
 
@@ -47,6 +47,8 @@ public class Main {
         builder.setToken(prop.getProperty("token"));
         builder.setAutoReconnect(true);
         builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
+        builder.addEventListener(new ReadyListener());
+        builder.addEventListener(new Command());
 
         try {
             jda = builder.buildBlocking();
