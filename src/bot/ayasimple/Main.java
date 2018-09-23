@@ -4,7 +4,6 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
@@ -55,8 +54,6 @@ public class Main {
         }catch (LoginException ex) {
             ex.printStackTrace();
         }catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }catch (RateLimitedException ex) {
             ex.printStackTrace();
         }
     }
