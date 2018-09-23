@@ -12,11 +12,11 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * @sience 14.09.2018
  */
 public class Command extends ListenerAdapter {
-    Mute mute = new Mute();
+    private Mute mute = new Mute();
 
     public void onMessageReceived(MessageReceivedEvent event){
         if(event.getMessage().getContentRaw().startsWith("!") && !event.getMember().getUser().isBot()){
-            String[] args = event.getMessage().getContentRaw().replaceFirst("!", "").split(" ");
+            String[] args = event.getMessage().getContentRaw().replaceFirst(ConfigurationBot.getBotPrefix(), "").split(" ");
 
                 switch(args[0].toLowerCase()){
                     case"help":
@@ -30,7 +30,7 @@ public class Command extends ListenerAdapter {
     }
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         if(event.getMessage().getContentRaw().startsWith("!") && !event.getMember().getUser().isBot()){
-            String[] args = event.getMessage().getContentRaw().replaceFirst("!", "").split(" ");
+            String[] args = event.getMessage().getContentRaw().replaceFirst(ConfigurationBot.getBotPrefix(), "").split(" ");
 
             switch(args[0].toLowerCase()){
                 case"mute":
