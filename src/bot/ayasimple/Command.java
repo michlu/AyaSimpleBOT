@@ -1,5 +1,6 @@
 package bot.ayasimple;
 
+import bot.ayasimple.event.Clear;
 import bot.ayasimple.event.Help;
 import bot.ayasimple.event.Mute;
 import bot.ayasimple.event.Online;
@@ -13,6 +14,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  */
 public class Command extends ListenerAdapter {
     private Mute mute = new Mute();
+    private Clear clear = new Clear();
 
     public void onMessageReceived(MessageReceivedEvent event){
         if(event.getMessage().getContentRaw().startsWith("!") && !event.getMember().getUser().isBot()){
@@ -35,6 +37,9 @@ public class Command extends ListenerAdapter {
             switch(args[0].toLowerCase()){
                 case"mute":
                     mute.run(event, args);
+                    break;
+                    case"clear":
+                    clear.run(event, args);
                     break;
             }
         }
