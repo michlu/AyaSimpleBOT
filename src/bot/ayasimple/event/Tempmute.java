@@ -64,15 +64,15 @@ public class Tempmute {
             Matcher matcher = pattern.matcher(time);
 
             TimeUnit unit = null;
-            Character timeUnit = time.charAt(time.length() - 1);
+            Character timeUnit = Character.toLowerCase(time.charAt(time.length() - 1));
             int parsedAmount = 0;
 
             if (matcher.matches()) {
-                if (timeUnit == 's' || timeUnit == 'S') {
+                if (timeUnit == 's') {
                     unit = TimeUnit.SECONDS;
-                } else if (timeUnit == 'm' || timeUnit == 'M') {
+                } else if (timeUnit == 'm') {
                     unit = TimeUnit.MINUTES;
-                } else if (timeUnit == 'h' || timeUnit == 'H') {
+                } else if (timeUnit == 'h') {
                     unit = TimeUnit.HOURS;
                 }
 
