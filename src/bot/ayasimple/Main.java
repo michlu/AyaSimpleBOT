@@ -29,9 +29,16 @@ public class Main {
             builder.setAutoReconnect(true);
             builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
 
+            XpSystem xpSystem = new XpSystem();
+            xpSystem.statTimer();
+
             // Listener:
             builder.addEventListener(new ReadyListener());
             builder.addEventListener(new Command());
+            builder.addEventListener(new Command());
+            builder.addEventListener(xpSystem);
+
+
 
             jda = builder.buildBlocking();
         }catch (LoginException ex) {

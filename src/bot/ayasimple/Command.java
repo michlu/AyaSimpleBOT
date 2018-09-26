@@ -12,6 +12,8 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class Command extends ListenerAdapter {
     private Mute mute = new Mute();
     private Clear clear = new Clear();
+    private Tempmute tempmute = new Tempmute();
+
     public void onMessageReceived(MessageReceivedEvent event){
         if(event.getMessage().getContentRaw().startsWith("!") && !event.getMember().getUser().isBot()){
             String[] args = event.getMessage().getContentRaw().replaceFirst(ConfigurationBot.getBotPrefix(), "").split(" ");
@@ -44,5 +46,5 @@ public class Command extends ListenerAdapter {
             }
         }
     }
-    private Tempmute tempmute = new Tempmute();
+
 }
